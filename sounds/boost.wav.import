@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/boost.wav-f980a2c64159ba9cd99995de535bb089.sample"
+type="AudioStreamWAV"
+uid="uid://bvwcmyyxc3b0n"
+path="res://.godot/imported/boost.wav-f980a2c64159ba9cd99995de535bb089.sample"
 
 [deps]
 
 source_file="res://sounds/boost.wav"
-dest_files=[ "res://.import/boost.wav-f980a2c64159ba9cd99995de535bb089.sample" ]
+dest_files=["res://.godot/imported/boost.wav-f980a2c64159ba9cd99995de535bb089.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

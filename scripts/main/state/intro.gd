@@ -4,7 +4,7 @@ var intro = null
 
 func on_init():
 	
-	intro = preload("res://scenes/ui/intro.tscn").instance()
+	intro = preload("res://scenes/ui/intro.tscn").instantiate()
 	add_child(intro)
 	
 func on_finalize():

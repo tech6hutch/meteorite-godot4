@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/shoot_red.wav-8802b9ac1539d5a91dc476170428ea1b.sample"
+type="AudioStreamWAV"
+uid="uid://hfd5nicn7ov7"
+path="res://.godot/imported/shoot_red.wav-8802b9ac1539d5a91dc476170428ea1b.sample"
 
 [deps]
 
 source_file="res://sounds/shoot_red.wav"
-dest_files=[ "res://.import/shoot_red.wav-8802b9ac1539d5a91dc476170428ea1b.sample" ]
+dest_files=["res://.godot/imported/shoot_red.wav-8802b9ac1539d5a91dc476170428ea1b.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

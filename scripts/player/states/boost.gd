@@ -6,7 +6,7 @@ func on_init():
 	
 	var timer = $timer
 	timer.start()
-	yield(timer, "timeout")
+	await timer.timeout
 	fsm.switch_state("rest")
 	
 	

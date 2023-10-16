@@ -1,7 +1,7 @@
-extends StaticBody
+extends StaticBody3D
 
-onready var ai_state = $ai_state
-onready var raycast = $raycast
+@onready var ai_state = $ai_state
+@onready var raycast = $raycast
 
 var health = 10
 
@@ -20,7 +20,7 @@ func destroy():
 	FX.spawn_effect("turret_explosion", global_transform.origin).init()
 	
 	# add respawner
-	var child = preload("res://scenes/enemies/respawner.tscn").instance()
+	var child = preload("res://scenes/enemies/respawner.tscn").instantiate()
 	child.init("res://scenes/enemies/turret.tscn")
 	LevelManager.get_current_level().add_child(child)
 	child.global_transform = global_transform
@@ -28,7 +28,7 @@ func destroy():
 func _ready():
 	ai_state.switch_state_immediately("asleep")
 	
-	$ai_timer.wait_time += rand_range(-1,1)*0.01
+	$ai_timer.wait_time += randf_range(-1,1)*0.01
 	
 func aim_at(pos):
 	
@@ -37,15 +37,15 @@ func aim_at(pos):
 	
 	# https://stackoverflow.com/a/2782712
 	var pitch = PI/2+atan(sqrt(pow(look_at_vec.x, 2) + pow(look_at_vec.z,2))/look_at_vec.y)
-	var roll = 0#sin(OS.get_ticks_msec()/100.0) # this is damn funny 
+	var roll = 0#sin(Time.get_ticks_msec()/100.0) # this is damn funny 
 	var yaw = -look_at_vec_2d.angle()+PI/2
 	
 	if pitch > PI/2:
 		pitch -= PI
 	
 	
-	$rotation_yaw.global_transform.basis = Basis(Vector3(0,yaw,roll)) 
-	$rotation_yaw/rotation_pitch.transform.basis = Basis(Vector3(pitch,0,0)) 
+	$rotation_yaw.global_transform.basis = Basis.from_euler(Vector3(0,yaw,roll)) 
+	$rotation_yaw/rotation_pitch.transform.basis = Basis.from_euler(Vector3(pitch,0,0)) 
 
 func _process(delta):
 

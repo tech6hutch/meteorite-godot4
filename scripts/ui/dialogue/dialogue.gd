@@ -1,8 +1,8 @@
 extends PanelContainer
 
-onready var diag_state = $diag_state
-onready var label = $faders/label
-onready var button = $button
+@onready var diag_state = $diag_state
+@onready var label = $faders/label
+@onready var button = $button
 
 var fade_amount = 0
 
@@ -19,7 +19,7 @@ func init(texts):
 func _process(delta):
 	diag_state.update(delta)
 	
-	material.set_shader_param("fade_amount", fade_amount)
+	material.set_shader_parameter("fade_amount", fade_amount)
 	$faders.modulate = Color(1,1,1, fade_amount)
 
 func _on_Button_pressed():

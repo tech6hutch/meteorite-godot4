@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var menu_state = $menu_state
+@onready var menu_state = $menu_state
 var selected_item = 0
 
 var in_option_state = false

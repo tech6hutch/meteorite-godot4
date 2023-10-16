@@ -1,6 +1,6 @@
 extends WorldEnvironment
 
-onready var game_state = $game_state
+@onready var game_state = $game_state
 
 var current_level = null
 

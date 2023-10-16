@@ -30,7 +30,7 @@ func check_play_land_footstep():
 		
 		can_play_footstep_land = false
 		$footstep_land_timer.start()
-		yield($footstep_land_timer, "timeout")
+		await $footstep_land_timer.timeout
 		can_play_footstep_land = true
 		
 	previous_velocity = fsm_owner.velocity

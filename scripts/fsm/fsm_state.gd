@@ -1,7 +1,7 @@
 extends Node
 
-onready var fsm = get_parent()
-onready var fsm_owner = fsm.get_parent()
+@onready var fsm = get_parent()
+@onready var fsm_owner = fsm.get_parent()
 
 func on_init():
 	pass

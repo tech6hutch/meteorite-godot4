@@ -30,7 +30,7 @@ func fixed_update(delta):
 		var length = (hitpoint - raycast.global_transform.origin).length()
 		
 		laser_mesh.mesh.height = length
-		laser_mesh.translation.z = -length / 2
+		laser_mesh.position.z = -length / 2
 		
 		fsm_owner.laser_hit_effect.global_transform.origin = hitpoint
 		

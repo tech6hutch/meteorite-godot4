@@ -1,10 +1,10 @@
-extends Spatial
+extends Node3D
 
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-onready var player_collect_area = $player_collect_area
-onready var player_win_area = $player_win_area
+@onready var player_collect_area = $player_collect_area
+@onready var player_win_area = $player_win_area
 
 
 func _ready():

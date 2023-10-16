@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode blend_add, cull_disabled, unshaded;
 
-uniform vec4 col : hint_color;
+uniform vec4 col : source_color;
 //default is  = vec3(0.5,0.8,0.4) 
 
 varying vec3 pos;

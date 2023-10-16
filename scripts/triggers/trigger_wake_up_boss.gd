@@ -1,4 +1,4 @@
-extends Area
+extends Area3D
 
 # Added for making the game work with Godot 3.3.2
 # This trigger is a cleanup because the oneshot connections seem to be firing early.

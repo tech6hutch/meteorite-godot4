@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/escape.ogg-e67f9e73f1446a9e096595c2a11b9ce5.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d3tt8fc5t2pee"
+path="res://.godot/imported/escape.ogg-e67f9e73f1446a9e096595c2a11b9ce5.oggvorbisstr"
 
 [deps]
 
 source_file="res://music/escape.ogg"
-dest_files=[ "res://.import/escape.ogg-e67f9e73f1446a9e096595c2a11b9ce5.oggstr" ]
+dest_files=["res://.godot/imported/escape.ogg-e67f9e73f1446a9e096595c2a11b9ce5.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

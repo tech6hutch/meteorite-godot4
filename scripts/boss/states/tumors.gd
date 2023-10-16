@@ -2,8 +2,8 @@ extends "res://scripts/fsm/fsm_state.gd"
 
 var tumors = []
 
-onready var timer_spawn = $timer_spawn
-onready var timer_end = $timer_end
+@onready var timer_spawn = $timer_spawn
+@onready var timer_end = $timer_end
 
 
 func on_init():
@@ -16,14 +16,14 @@ func on_init():
 	
 	for i in 13:
 		
-		yield(timer_spawn, "timeout")
+		await timer_spawn.timeout
 		
-		var tumor = preload("res://scenes/boss/tumor.tscn").instance()
+		var tumor = preload("res://scenes/boss/tumor.tscn").instantiate()
 		LevelManager.get_current_level().add_child(tumor)
 		
 		var col = randi() % 3
 		
-		var random_offset = Vector3(rand_range(-1,1), rand_range(-1,1), rand_range(-1,1)).normalized() * 4
+		var random_offset = Vector3(randf_range(-1,1), randf_range(-1,1), randf_range(-1,1)).normalized() * 4
 		var pos = fsm_owner.global_transform.origin + random_offset
 		tumor.init(fsm_owner, col, pos)
 		

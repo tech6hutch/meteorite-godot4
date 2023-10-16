@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/ui/main_menu/credits.gd" type="Script" id=1]
-[ext_resource path="res://fonts/main_font.tres" type="BitmapFont" id=2]
+[ext_resource path="res://fonts/main_font.tres" type="FontFile" id=2]
 
 [sub_resource type="Animation" id=1]
 
@@ -10,14 +10,14 @@ length = 30.0
 loop = false
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("text:rect_position")
+tracks/0/path = NodePath("text:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 30 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 30 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 64 ), Vector2( 0, -187 ) ]
 }
@@ -28,8 +28,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 30 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 30 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "done_scrolling"
@@ -72,14 +72,14 @@ length = 1.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.0441961 ), Color( 1, 1, 1, 0.535922 ) ]
 }
@@ -90,8 +90,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
+pivot_offset = Vector2( 0, 0 )
+clip_contents = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -104,8 +104,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
+pivot_offset = Vector2( 0, 0 )
+clip_contents = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -117,18 +117,18 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -187.0
-margin_bottom = -17.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
+offset_top = -187.0
+offset_bottom = -17.0
+pivot_offset = Vector2( 0, 0 )
+clip_contents = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color_shadow = Color( 0.292969, 0.292969, 0.292969, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource( 2 )
+theme_override_colors/font_shadow_color = Color( 0.292969, 0.292969, 0.292969, 1 )
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/line_spacing = -4
 text = "Meteorite
 
 
@@ -172,21 +172,21 @@ anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -19.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
+offset_top = -19.0
+pivot_offset = Vector2( 0, 0 )
+clip_contents = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = ExtResource( 2 )
+theme_override_styles/hover = SubResource( 3 )
+theme_override_styles/pressed = SubResource( 3 )
+theme_override_styles/focus = SubResource( 3 )
+theme_override_styles/normal = SubResource( 3 )
+theme_override_fonts/font = ExtResource( 2 )
 toggle_mode = false
-enabled_focus_mode = 2
+focus_mode = 2
 shortcut = null
 group = null
 flat = false
@@ -199,17 +199,17 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -1.0
-margin_bottom = 8.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
+offset_top = -1.0
+offset_bottom = 8.0
+pivot_offset = Vector2( 0, 0 )
+clip_contents = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 1, 1, 1, 0.241273 )
-custom_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource( 2 )
+theme_override_colors/font_color = Color( 1, 1, 1, 0.241273 )
+theme_override_constants/line_spacing = -4
 text = "You're welcome"
 align = 1
 autowrap = true

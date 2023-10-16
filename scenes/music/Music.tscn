@@ -14,7 +14,7 @@
 
 [node name="Music" type="Node" index="0"]
 
-pause_mode = 2
+process_mode = 3
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 

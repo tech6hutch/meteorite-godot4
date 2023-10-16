@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 
 var scene_to_spawn 
 
@@ -23,7 +23,7 @@ func try_spawn():
 	if dist2 < max_dist2:
 		return false # too close
 	
-	var child = load(scene_to_spawn).instance()
+	var child = load(scene_to_spawn).instantiate()
 	LevelManager.get_current_level().add_child(child)
 	child.global_transform = global_transform
 	print("respawned")	

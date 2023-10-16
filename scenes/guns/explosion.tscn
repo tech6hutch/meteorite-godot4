@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/guns/explosion.gd" type="Script" id=1]
-[ext_resource path="res://textures/fx/glow.png" type="Texture" id=2]
+[ext_resource path="res://textures/fx/glow.png" type="Texture2D" id=2]
 
-[sub_resource type="SphereShape" id=1]
+[sub_resource type="SphereShape3D" id=1]
 
 radius = 2.0
 
@@ -16,7 +16,7 @@ radial_segments = 64
 rings = 32
 is_hemisphere = false
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="StandardMaterial3D" id=3]
 
 resource_local_to_scene = true
 render_priority = 0
@@ -65,7 +65,7 @@ uv2_scale = Vector3( 1, 1, 1 )
 uv2_offset = Vector3( 0, 0, 0 )
 uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = true
+proximity_fade_enabled = true
 proximity_fade_distance = 0.4
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Emission", "Flags", "Metallic", "Parameters", "Proximity Fade", "Resource", "Roughness", "Vertex Color" ]
@@ -75,7 +75,7 @@ _sections_unfolded = [ "Albedo", "Emission", "Flags", "Metallic", "Parameters", 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector2( 8, 8 )
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="StandardMaterial3D" id=5]
 
 resource_local_to_scene = true
 render_priority = 0
@@ -128,7 +128,7 @@ uv2_scale = Vector3( 1, 1, 1 )
 uv2_offset = Vector3( 0, 0, 0 )
 uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = true
+proximity_fade_enabled = true
 proximity_fade_distance = 0.7
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Flags", "Metallic", "Parameters", "Proximity Fade", "Resource", "Vertex Color" ]
@@ -146,8 +146,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 0.182816, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 0.182816, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 1, 1, 1 ) ]
 }
@@ -158,8 +158,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 0.182816, 1, 0.182816 ),
+"times": PackedFloat32Array( 0, 1, 2 ),
+"transitions": PackedFloat32Array( 0.182816, 1, 0.182816 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
 }
@@ -170,8 +170,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 3, 3, 3 ), Vector3( 0, 0, 0 ) ]
 }
@@ -182,24 +182,24 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 2, 0.7, 0.7, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
 [sub_resource type="Gradient" id=7]
 
-offsets = PoolRealArray( 0, 0.576316, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1 )
+offsets = PackedFloat32Array( 0, 0.576316, 1 )
+colors = PackedColorArray( 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=8]
+[sub_resource type="GradientTexture2D" id=8]
 
 flags = 4
 gradient = SubResource( 7 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticleProcessMaterial" id=9]
 
 render_priority = 0
 trail_divisor = 1
@@ -235,9 +235,9 @@ anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
-_sections_unfolded = [ "Color", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Scale", "Spread", "Trail" ]
+_sections_unfolded = [ "Color", "Emission Shape3D", "Flags", "Gravity", "Initial Velocity", "Scale", "Spread", "Trail" ]
 
-[sub_resource type="SpatialMaterial" id=10]
+[sub_resource type="StandardMaterial3D" id=10]
 
 render_priority = 0
 flags_transparent = false
@@ -285,7 +285,7 @@ uv2_scale = Vector3( 1, 1, 1 )
 uv2_offset = Vector3( 0, 0, 0 )
 uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
+proximity_fade_enabled = false
 distance_fade_enable = false
 _sections_unfolded = [ "Flags", "Parameters", "Vertex Color" ]
 
@@ -299,14 +299,14 @@ radial_segments = 8
 rings = 8
 is_hemisphere = false
 
-[node name="explosion" type="Area" index="0"]
+[node name="explosion" type="Area3D" index="0"]
 
 input_ray_pickable = false
 input_capture_on_drag = false
 space_override = 0
 gravity_point = false
-gravity_distance_scale = 0.0
-gravity_vec = Vector3( 0, -1, 0 )
+gravity_point_unit_distance = 0.0
+gravity_direction = Vector3( 0, -1, 0 )
 gravity = 9.8
 linear_damp = 0.1
 angular_damp = 1.0
@@ -317,7 +317,7 @@ collision_layer = 0
 collision_mask = 5
 audio_bus_override = false
 audio_bus_name = "Master"
-reverb_bus_enable = false
+reverb_bus_enabled = false
 reverb_bus_name = "Master"
 reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
@@ -340,12 +340,12 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="CollisionShape" type="CollisionShape" parent="." index="2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
 
 shape = SubResource( 1 )
 disabled = false
 
-[node name="OmniLight" type="OmniLight" parent="." index="3"]
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="3"]
 
 layers = 1
 light_color = Color( 0.921875, 0.162048, 0.162048, 1 )
@@ -365,9 +365,9 @@ omni_range = 5.0
 omni_attenuation = 2.07053
 omni_shadow_mode = 1
 omni_shadow_detail = 1
-_sections_unfolded = [ "Light", "Omni" ]
+_sections_unfolded = [ "Light3D", "Omni" ]
 
-[node name="sphere" type="MeshInstance" parent="." index="4"]
+[node name="sphere" type="MeshInstance3D" parent="." index="4"]
 
 layers = 1
 material_override = null
@@ -381,11 +381,11 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = SubResource( 3 )
-_sections_unfolded = [ "Geometry", "Transform", "material" ]
+_sections_unfolded = [ "Geometry", "Transform3D", "material" ]
 
-[node name="glow" type="MeshInstance" parent="." index="5"]
+[node name="glow" type="MeshInstance3D" parent="." index="5"]
 
-transform = Transform( 0.168, 0, 0, 0, 0.168, 0, 0, 0, 0.168, 0, 0, 0 )
+transform = Transform3D( 0.168, 0, 0, 0, 0.168, 0, 0, 0, 0.168, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -398,7 +398,7 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 4 )
 skeleton = NodePath("..")
 material/0 = SubResource( 5 )
-_sections_unfolded = [ "Transform", "material" ]
+_sections_unfolded = [ "Transform3D", "material" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 
@@ -412,7 +412,7 @@ blend_times = [  ]
 
 [node name="Particles" type="Particles" parent="." index="7"]
 
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
+transform = Transform3D( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -438,7 +438,7 @@ draw_order = 0
 process_material = SubResource( 9 )
 draw_passes = 1
 draw_pass_1 = SubResource( 11 )
-_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Time", "Transform" ]
+_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Time", "Transform3D" ]
 
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
 

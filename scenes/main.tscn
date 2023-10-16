@@ -1,27 +1,27 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://bw1p24gdr7mee"]
 
-[ext_resource path="res://env.tres" type="Environment" id=1]
-[ext_resource path="res://scripts/main.gd" type="Script" id=2]
-[ext_resource path="res://scenes/fsm/fsm.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/main/state/game.gd" type="Script" id=4]
-[ext_resource path="res://scripts/main/state/main_menu.gd" type="Script" id=5]
-[ext_resource path="res://scripts/main/state/credits.gd" type="Script" id=6]
-[ext_resource path="res://scripts/main/state/intro.gd" type="Script" id=7]
+[ext_resource type="Environment" uid="uid://b3f1rr6jgwee" path="res://env.tres" id="1"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/fsm/fsm.tscn" id="3"]
+[ext_resource type="Script" path="res://scripts/main/state/game.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/main/state/main_menu.gd" id="5"]
+[ext_resource type="Script" path="res://scripts/main/state/credits.gd" id="6"]
+[ext_resource type="Script" path="res://scripts/main/state/intro.gd" id="7"]
 
 [node name="main" type="WorldEnvironment"]
-environment = ExtResource( 1 )
-script = ExtResource( 2 )
+environment = ExtResource("1")
+script = ExtResource("2")
 
-[node name="game_state" parent="." instance=ExtResource( 3 )]
+[node name="game_state" parent="." instance=ExtResource("3")]
 
 [node name="game" type="Node" parent="game_state"]
-script = ExtResource( 4 )
+script = ExtResource("4")
 
 [node name="main_menu" type="Node" parent="game_state"]
-script = ExtResource( 5 )
+script = ExtResource("5")
 
 [node name="credits" type="Node" parent="game_state"]
-script = ExtResource( 6 )
+script = ExtResource("6")
 
 [node name="intro" type="Node" parent="game_state"]
-script = ExtResource( 7 )
+script = ExtResource("7")

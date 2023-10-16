@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/save_station.gd" type="Script" id=1]
-[ext_resource path="res://textures/save/diskette.png" type="Texture" id=2]
-[ext_resource path="res://materials/shaders/volumetric_cylinder_base.shader" type="Shader" id=3]
+[ext_resource path="res://textures/save/diskette.png" type="Texture2D" id=2]
+[ext_resource path="res://materials/shaders/volumetric_cylinder_base.gdshader" type="Shader" id=3]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape3D" id=1]
 
-extents = Vector3( 0.75, 2, 0.75 )
+size = Vector3( 0.75, 2, 0.75 )
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="StandardMaterial3D" id=2]
 
 render_priority = 0
 flags_transparent = true
@@ -61,7 +61,7 @@ uv2_scale = Vector3( 1, 1, 1 )
 uv2_offset = Vector3( 0, 0, 0 )
 uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
+proximity_fade_enabled = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Emission", "Flags", "Metallic", "Parameters", "Roughness", "Vertex Color" ]
 
@@ -87,7 +87,7 @@ shader = ExtResource( 3 )
 shader_param/col = Color( 0.634914, 0.921875, 0.554565, 1 )
 _sections_unfolded = [ "shader_param" ]
 
-[node name="save_station" type="Area" index="0" groups=[
+[node name="save_station" type="Area3D" index="0" groups=[
 "save_station",
 ]]
 
@@ -95,8 +95,8 @@ input_ray_pickable = false
 input_capture_on_drag = false
 space_override = 0
 gravity_point = false
-gravity_distance_scale = 0.0
-gravity_vec = Vector3( 0, -1, 0 )
+gravity_point_unit_distance = 0.0
+gravity_direction = Vector3( 0, -1, 0 )
 gravity = 9.8
 linear_damp = 0.1
 angular_damp = 1.0
@@ -107,23 +107,23 @@ collision_layer = 0
 collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
-reverb_bus_enable = false
+reverb_bus_enabled = false
 reverb_bus_name = "Master"
 reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="." index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 shape = SubResource( 1 )
 disabled = false
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform3D" ]
 
-[node name="OmniLight" type="OmniLight" parent="." index="1"]
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 layers = 1
 light_color = Color( 0.59457, 0.824219, 0.289764, 1 )
 light_energy = 4.0
@@ -142,11 +142,11 @@ omni_range = 5.0
 omni_attenuation = 1.86607
 omni_shadow_mode = 1
 omni_shadow_detail = 1
-_sections_unfolded = [ "Light", "Omni", "Transform" ]
+_sections_unfolded = [ "Light3D", "Omni", "Transform3D" ]
 
-[node name="diskette" type="MeshInstance" parent="." index="2"]
+[node name="diskette" type="MeshInstance3D" parent="." index="2"]
 
-transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform3D( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 2, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -159,11 +159,11 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
-_sections_unfolded = [ "Geometry", "Transform", "material" ]
+_sections_unfolded = [ "Geometry", "Transform3D", "material" ]
 
-[node name="base" type="MeshInstance" parent="." index="3"]
+[node name="base" type="MeshInstance3D" parent="." index="3"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52, 0 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -176,7 +176,7 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 4 )
 skeleton = NodePath("..")
 material/0 = SubResource( 5 )
-_sections_unfolded = [ "Transform", "material" ]
+_sections_unfolded = [ "Transform3D", "material" ]
 
 [node name="timer" type="Timer" parent="." index="4"]
 

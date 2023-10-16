@@ -9,15 +9,15 @@ func on_init():
 	for c in get_children():
 		c.queue_free()
 		
-	current_level = preload("res://scenes/levels/level1.tscn").instance()
+	current_level = preload("res://scenes/levels/level1.tscn").instantiate()
 	add_child(current_level)
 	fsm_owner.current_level = current_level
 	
 	# this will persist the state of the player
 	# doesn't work when you do this in the exact same frame, need to wait 2 frames
 	
-	yield(get_tree(), "idle_frame")
-	yield(get_tree(), "idle_frame")
+	await get_tree().idle_frame
+	await get_tree().idle_frame
 	
 	Saver.do_load()
 	

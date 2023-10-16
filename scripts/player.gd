@@ -1,4 +1,4 @@
-extends KinematicBody
+extends CharacterBody3D
 
 var BulletColor = Enums.BulletColor
 
@@ -8,17 +8,17 @@ const max_health = 100
 var health = max_health
 var upgrades = [] # list of strings
 
-onready var cam = $cam
-onready var tween = $tween
-onready var gun_container = $cam/gun_container
-onready var gun = gun_container.get_node("gun")
-onready var body_state = $body_state
+@onready var cam = $cam
+@onready var tween = $tween
+@onready var gun_container = $cam/gun_container
+@onready var gun = gun_container.get_node("gun")
+@onready var body_state = $body_state
 
 
 var velocity = Vector3(0,0,0)
 var pitch = 0
 var yaw = PI/2
-var gun_rot = Quat()
+var gun_rot = Quaternion()
 var jump_counter = 1
 var in_warning_state = false
 var boss_defeated = false
@@ -30,14 +30,14 @@ func _ready():
 	
 	body_state.switch_state_immediately("rest")
 	
-	yield(get_tree(), "idle_frame")
-	yield(get_tree(), "idle_frame")
+	await get_tree().idle_frame
+	await get_tree().idle_frame
 	$ui/loading.hide()	
 	
 func _process(delta):
 	
 	cam.rotation = Vector3(pitch, yaw, 0)
-	gun_rot = gun_rot.slerp(Quat(cam.global_transform.basis), 0.3)
+	gun_rot = gun_rot.slerp(Quaternion(cam.global_transform.basis), 0.3)
 	gun_container.global_transform.basis = Basis(gun_rot)
 	
 	body_state.update(delta)
@@ -79,18 +79,21 @@ func process_jump(event):
 		
 func process_shoot(event):
 	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == BUTTON_LEFT:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			gun.shoot()
 		# TODO temp testing for now...
 	if event is InputEventKey and event.pressed:
-		match event.scancode:
+		match event.keycode:
 			 KEY_1: if is_unlocked(Enums.UPGRADE_GUN_BLUE): gun.switch_to_color(BulletColor.BLUE)
 			 KEY_2: if is_unlocked(Enums.UPGRADE_GUN_GREEN): gun.switch_to_color(BulletColor.GREEN)
 			 KEY_3: if is_unlocked(Enums.UPGRADE_GUN_RED): gun.switch_to_color(BulletColor.RED)
 
 func _physics_process(delta):
 	body_state.fixed_update(delta)
-	velocity = move_and_slide(velocity, Vector3(0,1,0))
+	set_velocity(velocity)
+	set_up_direction(Vector3(0,1,0))
+	move_and_slide()
+	velocity = velocity
 	
 	if body_state.state.has_method("process_boost"):
 		body_state.state.process_boost(delta)
@@ -101,7 +104,7 @@ func _physics_process(delta):
 	gun.velocity = velocity
 	gun.should_walk_jiggle = body_state.state.name == "rest" && is_on_floor()
 		
-	var slide_count = get_slide_count()
+	var slide_count = get_slide_collision_count()
 	for i in slide_count:
 		var coll = get_slide_collision(i)
 		if coll.collider.is_in_group("boss"):
@@ -127,7 +130,7 @@ func process_walk(delta):
 	if (goal_vel.length() > 1e-7): # don't divide by zero
 		goal_vel = goal_vel.normalized()
 		
-	velocity = velocity.linear_interpolate(goal_vel * max_goal_speed, 0.1)
+	velocity = velocity.lerp(goal_vel * max_goal_speed, 0.1)
 	velocity.y = old_y
 	
 func process_gravity(delta):
@@ -145,7 +148,7 @@ func hurt(amount, color = Enums.BulletColor.RED):
 		can_play_hit_sound = false
 		
 		$hit_sound_timer.start()
-		yield($hit_sound_timer, "timeout")
+		await $hit_sound_timer.timeout
 		can_play_hit_sound = true
 		
 func heal(amount):
@@ -170,11 +173,11 @@ func die():
 func do_save():
 	return {
 		"health": health,
-		"position": var2str(global_transform.origin),
+		"position": var_to_str(global_transform.origin),
 		"pitch": pitch,
 		"yaw": yaw,
 		"upgrades": upgrades,
-		"gun_color": var2str(gun.current_color),
+		"gun_color": var_to_str(gun.current_color),
 		"in_warning_state": in_warning_state,
 		"boss_defeated": boss_defeated
 	}
@@ -182,7 +185,7 @@ func do_save():
 func do_load(save_data):
 	print("we got upgrades:", save_data["upgrades"])
 	health = save_data["health"]
-	global_transform.origin = str2var(save_data["position"])
+	global_transform.origin = str_to_var(save_data["position"])
 	pitch = save_data["pitch"]
 	yaw = save_data["yaw"]
 	in_warning_state = save_data["in_warning_state"]
@@ -191,7 +194,7 @@ func do_load(save_data):
 	print("boss defeated? ", boss_defeated)
 	
 	upgrades = save_data["upgrades"] 
-	gun.current_color = str2var(save_data["gun_color"])
+	gun.current_color = str_to_var(save_data["gun_color"])
 	
 	if has_any_gun_upgrade():
 		gun.gun_state.switch_state("unholstering")
@@ -203,7 +206,7 @@ func set_boss_defeated(defeated):
 		print("boss deleted")
 		
 		var bosses = get_tree().get_nodes_in_group("boss")
-		if !bosses.empty():
+		if !bosses.is_empty():
 			bosses[0].queue_free()
 			
 		$escape_warning_timer.start()
@@ -264,7 +267,7 @@ func start_ending_sequence():
 	
 	# unlock the door(s?)
 	for door in get_tree().get_nodes_in_group("boss_door"):
-		door.unlock()
+		false # door.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 
 	# spawn ufo
 	for ufo in get_tree().get_nodes_in_group("ufo"):

@@ -28,18 +28,18 @@ func on_shoot():
 			
 	
 static func randomize_forward(forward, amount):
-	var rand_vec = Vector3(rand_range(-1, 1), rand_range(-1, 1), rand_range(-1, 1)) * amount
+	var rand_vec = Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)) * amount
 	return (forward + rand_vec).normalized()
 	
 func wait_before_shoot(time):
 	can_shoot = false
 	$timer.wait_time = time
 	$timer.start()
-	yield($timer, "timeout")
+	await $timer.timeout
 	can_shoot = true
 	
 func spawn_bullet(origin, forward):
-	var bullet = preload("res://scenes/guns/bullet.tscn").instance()
+	var bullet = preload("res://scenes/guns/bullet.tscn").instantiate()
 	LevelManager.get_current_level().add_child(bullet)
 	bullet.init(origin, forward, fsm_owner.current_color)
 	

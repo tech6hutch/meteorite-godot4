@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var bar_fg = $bar.get_stylebox("fg")
-onready var initial_bar_fg_color = bar_fg.bg_color
+@onready var bar_fg = $bar.get_stylebox("fg")
+@onready var initial_bar_fg_color = bar_fg.bg_color
 
 var hp_smooth = 0
 

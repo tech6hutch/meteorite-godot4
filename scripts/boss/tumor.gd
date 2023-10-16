@@ -1,4 +1,4 @@
-extends StaticBody
+extends StaticBody3D
 
 var color
 var boss
@@ -16,7 +16,7 @@ func init(boss, color, pos):
 	self.color = color
 	global_transform.origin = pos
 	
-	var mat = $mesh.get_surface_material(0)
+	var mat = $mesh.get_surface_override_material(0)
 	
 	var col = Enums.get_bullet_color(color)
 	var bright = 2.2

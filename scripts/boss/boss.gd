@@ -1,15 +1,15 @@
-extends StaticBody
+extends StaticBody3D
 
 var max_health = 200
 var health = max_health
 
-onready var boss_state = $boss_state
-onready var raycast = $raycast
+@onready var boss_state = $boss_state
+@onready var raycast = $raycast
 
-onready var ui_health = $ui/health
-onready var laser = $laser
-onready var laser_mesh = $laser/mesh
-onready var laser_hit_effect = $laser/hit_effect
+@onready var ui_health = $ui/health
+@onready var laser = $laser
+@onready var laser_mesh = $laser/mesh
+@onready var laser_hit_effect = $laser/hit_effect
 
 
 func _process(delta):
@@ -22,7 +22,7 @@ func _physics_process(delta):
 	var original_basis = global_transform.basis
 	look_at(PlayerData.get_player().global_transform.origin, Vector3(0,1,0))
 	var look_at_basis =  global_transform.basis
-	global_transform.basis = Basis(Quat(original_basis).slerp(Quat(look_at_basis), 0.05))
+	global_transform.basis = Basis(Quaternion(original_basis).slerp(Quaternion(look_at_basis), 0.05))
 	
 	boss_state.fixed_update(delta)	
 

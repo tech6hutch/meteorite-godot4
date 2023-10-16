@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/turret_alert.wav-ad724db6a94695b08a0f53b3ffaf9bac.sample"
+type="AudioStreamWAV"
+uid="uid://dsc1p15dt3foo"
+path="res://.godot/imported/turret_alert.wav-ad724db6a94695b08a0f53b3ffaf9bac.sample"
 
 [deps]
 
 source_file="res://sounds/turret_alert.wav"
-dest_files=[ "res://.import/turret_alert.wav-ad724db6a94695b08a0f53b3ffaf9bac.sample" ]
+dest_files=["res://.godot/imported/turret_alert.wav-ad724db6a94695b08a0f53b3ffaf9bac.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

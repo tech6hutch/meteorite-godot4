@@ -4,7 +4,7 @@ var credits = null
 
 func on_init():
 	
-	credits = preload("res://scenes/ui/main_menu/credits.tscn").instance()
+	credits = preload("res://scenes/ui/main_menu/credits.tscn").instantiate()
 	add_child(credits)
 	
 func on_finalize():

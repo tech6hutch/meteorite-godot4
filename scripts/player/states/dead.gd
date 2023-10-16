@@ -9,10 +9,10 @@ func fixed_update(delta):
 func on_init():
 	
 	# limp to the side
-	var rot_start = Quat(fsm_owner.global_transform.basis)
+	var rot_start = Quaternion(fsm_owner.global_transform.basis)
 	
 	var axis = (fsm_owner.cam.global_transform.basis.z * Vector3(1,0,1)).normalized()
-	var rot_end = rot_start * Quat(axis, PI/-2)
+	var rot_end = rot_start * Quaternion(axis, PI/-2)
 	
 	$tween.interpolate_method(self, "tween_rot", rot_start, rot_end, 1.6, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
 	$tween.start()
@@ -24,7 +24,7 @@ func on_init():
 	
 	var timer = $timer
 	timer.start()
-	yield(timer, "timeout")
+	await timer.timeout
 	
 	#LevelManager.switch_to("main_menu")
 	LevelManager.reload_level()

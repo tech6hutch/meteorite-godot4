@@ -1,4 +1,4 @@
-extends Area
+extends Area3D
 
 var fired_by_enemy
 var seen_nodes = [] 

@@ -15,7 +15,7 @@ func on_init():
 	
 	for c in get_children():
 		
-		var menu_item_text = preload("res://scenes/ui/main_menu/menu_item_text.tscn").instance()
+		var menu_item_text = preload("res://scenes/ui/main_menu/menu_item_text.tscn").instantiate()
 		
 		if fsm_owner.pause_menu && c.name == "play":
 			menu_item_text.name = "continue"
@@ -44,5 +44,5 @@ func on_init():
 func on_finalize():
 	
 	for c in fsm_owner.get_node("menu_item_texts").get_children():
-		c.name = var2str(randf()) # needed!
+		c.name = var_to_str(randf()) # needed!
 		c.queue_free()

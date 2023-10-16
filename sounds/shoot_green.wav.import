@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/shoot_green.wav-74780a9dd9c6df2930e51fceee1ada59.sample"
+type="AudioStreamWAV"
+uid="uid://cvnk62s60igod"
+path="res://.godot/imported/shoot_green.wav-74780a9dd9c6df2930e51fceee1ada59.sample"
 
 [deps]
 
 source_file="res://sounds/shoot_green.wav"
-dest_files=[ "res://.import/shoot_green.wav-74780a9dd9c6df2930e51fceee1ada59.sample" ]
+dest_files=["res://.godot/imported/shoot_green.wav-74780a9dd9c6df2930e51fceee1ada59.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

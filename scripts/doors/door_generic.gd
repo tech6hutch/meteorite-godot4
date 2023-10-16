@@ -1,24 +1,24 @@
-extends Spatial
+extends Node3D
 
 var is_open = false
 var is_locked = false
 
-export (String) var door_list # string containing door half names separated by commas
-export (String) var door_texture_prefix = "textures/doors/door"
+@export (String) var door_list # string containing door half names separated by commas
+@export (String) var door_texture_prefix = "textures/doors/door"
 var doors = []
 
 var initial_positions = {} 
 var target_positions = {}
 
 
-onready var tween = $tween
-onready var timer = $timer
+@onready var tween = $tween
+@onready var timer = $timer
 
-export var duration = 1.4
+@export var duration = 1.4
 
 var BulletColor = Enums.BulletColor
 # https://github.com/godotengine/godot/issues/19704 too bad!
-export(int, "Blue", "Green", "Red") var bullet_color = 0
+@export var bullet_color = 0 # (int, "Blue", "Green", "Red")
 
 func _ready():
 	
@@ -33,13 +33,13 @@ func _ready():
 		
 	for door in doors:
 		var door_name = door.name
-		initial_positions[door_name] = door.translation
+		initial_positions[door_name] = door.position
 		target_positions[door_name] = door.get_node("static_collision").move_to_pos
 		
 	
 func set_doormat_tex(tex):
 	for door in doors:
-		var mat = door.get_surface_material(0)
+		var mat = door.get_surface_override_material(0)
 		mat.albedo_texture = tex
 	
 func open_if_match(col):
@@ -58,11 +58,11 @@ func open():
 	
 	for door in doors:
 		var door_name = door.name
-		tween.interpolate_property(door, "translation", initial_positions[door_name], target_positions[door_name], duration, Tween.TRANS_BOUNCE,Tween.EASE_OUT)
+		tween.interpolate_property(door, "position", initial_positions[door_name], target_positions[door_name], duration, Tween.TRANS_BOUNCE,Tween.EASE_OUT)
 	tween.start()
 	
 	timer.start()
-	yield(timer,"timeout")
+	await timer.timeout
 	close()
 	
 	
@@ -76,7 +76,7 @@ func close():
 	
 	for door in doors:
 		var door_name = door.name
-		tween.interpolate_property(door, "translation", target_positions[door_name], initial_positions[door_name], duration, Tween.TRANS_BOUNCE,Tween.EASE_OUT)
+		tween.interpolate_property(door, "position", target_positions[door_name], initial_positions[door_name], duration, Tween.TRANS_BOUNCE,Tween.EASE_OUT)
 	tween.start()
 	
 	timer.stop()

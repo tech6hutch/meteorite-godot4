@@ -1,14 +1,14 @@
-extends Area
+extends Area3D
 
-export var upgrade_name = ""
+@export var upgrade_name = ""
 
 func _ready():
 	var color = get_upgrade_color()
-	var mat = $cube.get_surface_material(0)
+	var mat = $cube.get_surface_override_material(0)
 	mat.albedo_color = color
 	
-	var base_mat = $base.get_surface_material(0)
-	base_mat.set_shader_param("col", color)
+	var base_mat = $base.get_surface_override_material(0)
+	base_mat.set_shader_parameter("col", color)
 	
 	$cube/light.light_color = color
 	

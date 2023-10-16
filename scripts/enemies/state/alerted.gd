@@ -32,7 +32,7 @@ func on_think():
 func _on_shoot_timer_timeout():
 	
 	Sound.play_sound_at("shoot_blue", fsm_owner.global_transform.origin)
-	var bullet = preload("res://scenes/guns/bullet.tscn").instance()
+	var bullet = preload("res://scenes/guns/bullet.tscn").instantiate()
 	
 	LevelManager.get_current_level().add_child(bullet)
 	bullet.init(fsm_owner.global_transform.origin, -fsm_owner.raycast.global_transform.basis.z.normalized(), Enums.BulletColor.RED, true)

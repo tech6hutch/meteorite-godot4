@@ -13,7 +13,7 @@ func add_text_dialog(texts):
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	var dialog = preload("res://scenes/ui/dialogue.tscn").instance()
+	var dialog = preload("res://scenes/ui/dialogue.tscn").instantiate()
 	dialog.init(texts)
 	add_child(dialog)
 	
@@ -36,7 +36,7 @@ func add_pause_dialog():
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	var dialog = preload("res://scenes/ui/pause.tscn").instance()
+	var dialog = preload("res://scenes/ui/pause.tscn").instantiate()
 	add_child(dialog)
 
 func any_dialog_open():

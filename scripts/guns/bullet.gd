@@ -1,10 +1,10 @@
-extends Spatial #can't use area https://github.com/godotengine/godot/issues/16392
+extends Node3D #can't use area https://github.com/godotengine/godot/issues/16392
 
 var velocity = Vector3(0,0,0)
 var BulletColor = Enums.BulletColor
 var color
 var fired_by_enemy = false
-onready var raycast = $raycast
+@onready var raycast = $raycast
 
 var can_play_ricochet_sound = true
 
@@ -17,13 +17,13 @@ func ricochet():
 		Sound.play_sound_at("bullet_ricochet", global_transform.origin)
 		can_play_ricochet_sound = false
 		$timer_ricochet_sound.start()
-		yield($timer_ricochet_sound, "timeout")
+		await $timer_ricochet_sound.timeout
 		can_play_ricochet_sound = true
 	
 	
 func _physics_process(delta):
 	
-	raycast.cast_to = velocity * delta * 2
+	raycast.target_position = velocity * delta * 2
 	
 	global_translate(velocity * delta)
 	#var coll = move_and_collide(velocity * delta)
@@ -74,7 +74,7 @@ func destroy():
 		queue_free() # TODO show pretty particles
 		
 		if color == BulletColor.RED && !fired_by_enemy:
-			var explosion = preload("res://scenes/guns/explosion.tscn").instance()
+			var explosion = preload("res://scenes/guns/explosion.tscn").instantiate()
 			LevelManager.get_current_level().add_child(explosion)
 			explosion.init(global_transform.origin, fired_by_enemy)			
 
@@ -82,8 +82,8 @@ func init(position, direction, color, is_fired_by_enemy = false):
 	fired_by_enemy = is_fired_by_enemy
 	
 	if is_fired_by_enemy:
-		raycast.set_collision_mask_bit(1, true) #player
-		raycast.set_collision_mask_bit(2, false) #enemy
+		raycast.set_collision_mask_value(1, true) #player
+		raycast.set_collision_mask_value(2, false) #enemy
 		
 	
 	global_transform.origin = position
@@ -91,7 +91,7 @@ func init(position, direction, color, is_fired_by_enemy = false):
 	
 	self.color = color
 	
-	$glow.get_surface_material(0).albedo_color = Enums.get_bullet_color(color) * 3.0
+	$glow.get_surface_override_material(0).albedo_color = Enums.get_bullet_color(color) * 3.0
 	$light.light_color = Enums.get_bullet_color(color)
 
 

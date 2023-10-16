@@ -2,10 +2,10 @@
 
 [ext_resource path="res://scenes/doors/door_small.dae" type="PackedScene" id=1]
 [ext_resource path="res://scripts/doors/door_generic.gd" type="Script" id=2]
-[ext_resource path="res://textures/doors/door_red.png" type="Texture" id=3]
+[ext_resource path="res://textures/doors/door_red.png" type="Texture2D" id=3]
 [ext_resource path="res://scripts/doors/door_half.gd" type="Script" id=4]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="StandardMaterial3D" id=1]
 
 resource_local_to_scene = true
 resource_name = "door_small"
@@ -56,14 +56,14 @@ uv2_scale = Vector3( 1, 1, 1 )
 uv2_offset = Vector3( 0, 0, 0 )
 uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
+proximity_fade_enabled = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Flags", "Resource" ]
 
 [node name="door_small" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform3D" ]
 door_list = "doorL,doorR"
 door_texture_prefix = "textures/doors/door"
 duration = 1.4

@@ -1,7 +1,7 @@
 extends "res://scripts/guns/states/gun_state.gd"
 
-onready var gun = fsm_owner.get_node("Guns")
-onready var timer = $timer
+@onready var gun = fsm_owner.get_node("Guns")
+@onready var timer = $timer
 
 func on_init():
 	gun.hide()

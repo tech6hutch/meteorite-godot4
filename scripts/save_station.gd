@@ -1,9 +1,9 @@
-extends Area
+extends Area3D
 
 signal saved(save_station)
 
-onready var diskette = $diskette
-onready var timer = $timer
+@onready var diskette = $diskette
+@onready var timer = $timer
 var can_save = false
 
 func _ready():
@@ -12,7 +12,7 @@ func _ready():
 func wait_for_save():
 	can_save = false
 	timer.start()
-	yield(timer,"timeout")
+	await timer.timeout
 	can_save = true
 	
 

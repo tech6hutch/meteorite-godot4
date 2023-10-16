@@ -1,6 +1,6 @@
 extends Node
 
-onready var node_main = get_node("/root/main")
+@onready var node_main = get_node("/root/main")
 
 func reload_level():
 	node_main.game_state.switch_state("game")

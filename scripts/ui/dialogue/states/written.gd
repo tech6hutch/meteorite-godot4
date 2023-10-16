@@ -2,7 +2,7 @@ extends "res://scripts/fsm/fsm_state.gd"
 
 func on_init():
 	$timer.start()
-	yield($timer, "timeout")
+	await $timer.timeout
 	on_next()
 	
 func on_finalize():

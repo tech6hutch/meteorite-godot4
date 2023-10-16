@@ -9,7 +9,7 @@ func intro_done():
 	
 	$timer_intro.start()
 	
-	yield($timer_intro, "timeout")
+	await $timer_intro.timeout
 	
 	start_intro_out()
 	

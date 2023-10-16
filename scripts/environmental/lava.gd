@@ -1,7 +1,7 @@
-tool
-extends Spatial
+@tool
+extends Node3D
 
-export (Vector3) var bounds = Vector3(1,1,1)#setget set_bounds  → no worky
+@export (Vector3) var bounds = Vector3(1,1,1)#: set = set_bounds
 var area 
 var shape
 var mesh 
@@ -15,19 +15,19 @@ func _ready():
 func _process(delta):
 	set_bounds(bounds)
 	
-	if Engine.editor_hint:
+	if Engine.is_editor_hint():
 		return
 		
-	mesh.get_surface_material(0).uv1_offset += Vector3(1,1,0)*0.1*delta
+	mesh.get_surface_override_material(0).uv1_offset += Vector3(1,1,0)*0.1*delta
 	
 func set_bounds(value):
 	bounds = value
 	mesh.mesh.size = bounds * (1 - 1e-3) # against z-fighting
-	shape.shape.extents = bounds / 2
+	shape.shape.size = bounds / 2
 
 func _physics_process(delta):
 	
-	if Engine.editor_hint:
+	if Engine.is_editor_hint():
 		return
 		
 	for b in area.get_overlapping_bodies():

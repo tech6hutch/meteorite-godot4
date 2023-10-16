@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/boss_tumor_start.wav-1f3b83f65f8361221e3f5359ec9e1f18.sample"
+type="AudioStreamWAV"
+uid="uid://dsv4jgbjuvjn2"
+path="res://.godot/imported/boss_tumor_start.wav-1f3b83f65f8361221e3f5359ec9e1f18.sample"
 
 [deps]
 
 source_file="res://sounds/boss_tumor_start.wav"
-dest_files=[ "res://.import/boss_tumor_start.wav-1f3b83f65f8361221e3f5359ec9e1f18.sample" ]
+dest_files=["res://.godot/imported/boss_tumor_start.wav-1f3b83f65f8361221e3f5359ec9e1f18.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

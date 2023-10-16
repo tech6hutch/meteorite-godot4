@@ -6,3 +6,5 @@ bin
 *.blend
 *.blend1
 *.ttf
+# Godot 4
+.godot

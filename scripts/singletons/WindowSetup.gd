@@ -2,9 +2,9 @@ extends Node
 
 func _ready():
 	
-	OS.window_size = Vector2(1280,720)
-	yield(get_tree(), "idle_frame")
-	OS.center_window()
+	get_window().size = Vector2(1280,720)
+	await get_tree().process_frame
+	DisplayServer.window_set_position(DisplayServer.screen_get_position() + (DisplayServer.screen_get_size() - DisplayServer.window_get_size()) / 2)
 
 	
 

@@ -1,7 +1,7 @@
 extends Node
 
 
-onready var music_state = $music_state
+@onready var music_state = $music_state
 
 var fading_to = null
 var fading_from = null
@@ -28,11 +28,11 @@ func enqueue(name):
 #	print("enqueued %s" % name)
 	
 func is_queue_empty():
-	return music_queue.empty()
+	return music_queue.is_empty()
 	
 func pop_queue():
 	
-	if music_queue.empty():
+	if music_queue.is_empty():
 		print("no more music left")
 		return
 		

@@ -16,13 +16,25 @@ func on_init():
 		tween.interpolate_property(player_fading_from, "volume_db", 0, min_db, duration, Tween.TRANS_CUBIC, Tween.EASE_IN)
 		
 	var player_fading_to = fsm_owner.get_player(fsm_owner.fading_to)	
-	tween.interpolate_property(player_fading_to, "volume_db", min_db, 0, duration, Tween.TRANS_CUBIC, Tween.EASE_OUT)	
+	
+	
+	
+	   
+	
+	
+	
+	
+	
+	
+			zxzx
+			x
+			xztween.interpolate_property(player_fading_to, "volume_db", min_db, 0, duration, Tween.TRANS_CUBIC, Tween.EASE_OUT)	
 	
 	tween.start()
 	
 	player_fading_to.play()
 	
-	yield(tween, "tween_completed")
+	await tween.tween_completed
 	
 	if fsm_owner.fading_from:
 		player_fading_from.stop()

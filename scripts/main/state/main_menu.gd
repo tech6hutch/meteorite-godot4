@@ -4,7 +4,7 @@ var main_menu = null
 
 func on_init():
 	
-	main_menu = preload("res://scenes/ui/main_menu/main_menu.tscn").instance()
+	main_menu = preload("res://scenes/ui/main_menu/main_menu.tscn").instantiate()
 	add_child(main_menu)
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

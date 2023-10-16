@@ -1,4 +1,4 @@
-tool
+@tool
 extends Node
 
 # blue is 0, green is 1, red is 2

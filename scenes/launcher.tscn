@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/launcher.gd" type="Script" id=1]
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="ParticleProcessMaterial" id=2]
 
 render_priority = 0
 trail_divisor = 1
@@ -38,9 +38,9 @@ anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
-_sections_unfolded = [ "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
+_sections_unfolded = [ "Emission Shape3D", "Gravity", "Initial Velocity", "Scale", "Spread" ]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="StandardMaterial3D" id=4]
 
 render_priority = 0
 flags_transparent = false
@@ -88,7 +88,7 @@ uv2_scale = Vector3( 1, 1, 1 )
 uv2_offset = Vector3( 0, 0, 0 )
 uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
+proximity_fade_enabled = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Flags", "Parameters", "Vertex Color" ]
 
@@ -102,11 +102,11 @@ radial_segments = 8
 rings = 16
 is_hemisphere = false
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape3D" id=1]
 
-extents = Vector3( 1, 0.5, 1 )
+size = Vector3( 1, 0.5, 1 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="StandardMaterial3D" id=6]
 
 render_priority = 0
 flags_transparent = false
@@ -154,7 +154,7 @@ uv2_scale = Vector3( 1, 1, 1 )
 uv2_offset = Vector3( 0, 0, 0 )
 uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
+proximity_fade_enabled = false
 distance_fade_enable = false
 _sections_unfolded = [ "Emission", "Metallic", "Roughness" ]
 
@@ -168,14 +168,14 @@ height = 0.01
 radial_segments = 64
 rings = 4
 
-[node name="launcher" type="Area" index="0"]
+[node name="launcher" type="Area3D" index="0"]
 
 input_ray_pickable = false
 input_capture_on_drag = false
 space_override = 0
 gravity_point = false
-gravity_distance_scale = 0.0
-gravity_vec = Vector3( 0, -1, 0 )
+gravity_point_unit_distance = 0.0
+gravity_direction = Vector3( 0, -1, 0 )
 gravity = 9.8
 linear_damp = 0.1
 angular_damp = 1.0
@@ -186,7 +186,7 @@ collision_layer = 0
 collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
-reverb_bus_enable = false
+reverb_bus_enabled = false
 reverb_bus_name = "Master"
 reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
@@ -195,7 +195,7 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="Particles" type="Particles" parent="." index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -223,16 +223,16 @@ draw_passes = 1
 draw_pass_1 = SubResource( 3 )
 _sections_unfolded = [ "Draw Passes", "Drawing", "Process Material" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 shape = SubResource( 1 )
 disabled = false
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform3D" ]
 
-[node name="OmniLight" type="OmniLight" parent="." index="2"]
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -252,9 +252,9 @@ omni_attenuation = 1.0
 omni_shadow_mode = 1
 omni_shadow_detail = 1
 
-[node name="MeshInstance" type="MeshInstance" parent="." index="3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="3"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -267,7 +267,7 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 5 )
 skeleton = NodePath("..")
 material/0 = null
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform3D" ]
 
 [connection signal="body_entered" from="." to="." method="_on_launcher_body_entered"]
 

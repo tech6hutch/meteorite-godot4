@@ -1,15 +1,15 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/environmental/lava.gd" type="Script" id=1]
-[ext_resource path="res://textures/environmental/lava.png" type="Texture" id=2]
+[ext_resource path="res://textures/environmental/lava.png" type="Texture2D" id=2]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape3D" id=1]
 
 resource_local_to_scene = true
-extents = Vector3( 0.5, 0.5, 0.5 )
+size = Vector3( 0.5, 0.5, 0.5 )
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="BoxMesh" id=2]
 
 resource_local_to_scene = true
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
@@ -19,7 +19,7 @@ subdivide_height = 0
 subdivide_depth = 0
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="StandardMaterial3D" id=3]
 
 render_priority = -1
 flags_transparent = false
@@ -72,23 +72,23 @@ uv2_scale = Vector3( 1, 1, 1 )
 uv2_offset = Vector3( 0, 0, 0 )
 uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
+proximity_fade_enabled = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Emission", "Flags", "Metallic", "NormalMap", "Parameters", "Roughness", "UV1", "Vertex Color" ]
 
-[node name="lava" type="Spatial" index="0"]
+[node name="lava" type="Node3D" index="0"]
 
 script = ExtResource( 1 )
 bounds = Vector3( 1, 1, 1 )
 
-[node name="area" type="Area" parent="." index="0"]
+[node name="area" type="Area3D" parent="." index="0"]
 
 input_ray_pickable = false
 input_capture_on_drag = false
 space_override = 0
 gravity_point = false
-gravity_distance_scale = 0.0
-gravity_vec = Vector3( 0, -1, 0 )
+gravity_point_unit_distance = 0.0
+gravity_direction = Vector3( 0, -1, 0 )
 gravity = 9.8
 linear_damp = 0.1
 angular_damp = 1.0
@@ -99,18 +99,18 @@ collision_layer = 0
 collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
-reverb_bus_enable = false
+reverb_bus_enabled = false
 reverb_bus_name = "Master"
 reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
 _sections_unfolded = [ "Collision" ]
 
-[node name="shape" type="CollisionShape" parent="area" index="0"]
+[node name="shape" type="CollisionShape3D" parent="area" index="0"]
 
 shape = SubResource( 1 )
 disabled = false
 
-[node name="mesh" type="MeshInstance" parent="." index="1"]
+[node name="mesh" type="MeshInstance3D" parent="." index="1"]
 
 layers = 1
 material_override = null

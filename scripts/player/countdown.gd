@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var timer = $timer
+@onready var timer = $timer
 
 func _ready():
 	# Called when the node is added to the scene for the first time.

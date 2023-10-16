@@ -26,7 +26,7 @@ func show_checkbox(config_prop_name):
 	is_option = true
 	config_property_name = config_prop_name
 	
-	$checkbox.pressed = Config.get(config_property_name)
+	$checkbox.button_pressed = Config.get(config_property_name)
 	option_type = Enums.MenuItemType.OptionCheckbox
 	
 	
@@ -40,5 +40,5 @@ func adjust(value):
 	Config.call("set_%s" % config_property_name, $slider.value)
 	
 func toggle():
-	$checkbox.pressed = !$checkbox.pressed 
+	$checkbox.button_pressed = !$checkbox.pressed 
 	Config.call("set_%s" % config_property_name, $checkbox.pressed)
